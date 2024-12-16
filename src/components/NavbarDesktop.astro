@@ -1,0 +1,28 @@
+---
+import { Search, ShoppingBag } from "lucide-react";
+import ButtonIcon from "./ButtonIcon.astro";
+import { NavLinks } from "../model/NavLinks";
+---
+
+<div class="hidden md:flex items-center">
+   <div class="flex items-center gap-x-8 mr-12">
+    {
+      NavLinks.map((item) => (
+        <a href={item.link} class="font-medium w-[69px] hover:text-[#F83D8E] cursor-pointer duration-200 transition-all">
+          {item.title}
+        </a>
+      ))
+    }
+   </div>
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3">
+        <Search
+          className="h-[16px] hover:text-[#F73D8E] duration-200 transition-all cursor-pointer"
+        />
+        <ShoppingBag
+          className="h-[16px] hover:text-[#F73D8E] duration-200 transition-all cursor-pointer"
+        />
+      </div>
+      <ButtonIcon title="Contact Us" />
+    </div>
+  </div>

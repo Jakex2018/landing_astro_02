@@ -1,0 +1,23 @@
+---
+import { categoryModel } from "../../model/categoryModel";
+import CategoryCard from "../category/CategoryCard.astro";
+---
+
+<div id="category" class="relative h-[270vh]  sm:h-[200vh] md:h-[150vh] lg:h-[100vh] overflow-hidden bg-white">
+  <div class="flex flex-col items-center mx-auto">
+    <span class="leading-[50px] text-[40px] font-swash mt-16 mb-2">
+      Explore Our<strong class="text-[#F83D8E] ml-2">Categories</strong>
+    </span>
+    <p class="text-gray-700 font-normal text-center">
+      Browse through our different categories to find your favorite ice cream
+      treats.
+    </p>
+  </div>
+  <div class="flex lg:flex-row flex-col py-12 md:py-2 px-0 md:px-8 items-center mx-auto max-w-5xl justify-center gap-8 mt-10">
+    {
+      categoryModel.map((item) => (
+        <CategoryCard title={item.title} img={item.img} />
+      ))
+    }
+  </div>
+</div>

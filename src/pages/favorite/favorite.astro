@@ -1,0 +1,27 @@
+---
+import FavoriteCarousel from "./components/FavoriteCarousel.astro";
+---
+
+<div id="favorite" class="relative overflow-hidden h-[310vh] md:h-[120vh] bg-[#F7F2F7]">
+  <div class="flex flex-col items-center mx-auto">
+    <span class="leading-[50px] text-[40px] font-swash mt-16 mb-2">
+      Our Classic<strong class="text-[#F83D8E] ml-2">Favorites</strong>
+    </span>
+    <p class="text-gray-700 font-normal">
+      Check out our top products that our customers love.
+    </p>
+  </div>
+  <div>
+    <div class="flex flex-col items-center justify-center">
+      <div class="w-full flex mx-auto justify-center items-center mt-12 ">
+        <FavoriteCarousel />
+      </div>
+    </div>
+    <div class="absolute top-[15%] left-0">
+      <img src="/asset/favorite/cream-left.webp" class="h-[240px]" alt="" />
+    </div>
+    <div class="absolute bottom-[8%] right-0">
+      <img src="/asset/favorite/cream-right.webp" class="h-[300px]" alt="" />
+    </div>
+  </div>
+</div>

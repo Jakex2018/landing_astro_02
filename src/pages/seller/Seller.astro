@@ -1,0 +1,22 @@
+---
+import FavoriteCarousel from "../favorite/components/FavoriteCarousel.astro";
+---
+
+<div
+    id="seller"
+    class="relative  h-[310vh] md:h-[120vh] bg-[#F7F2F7]"
+>
+    <div class="flex flex-col items-center mx-auto px-6 text-center">
+        <span class="leading-[50px] text-[40px] font-swash mt-16 mb-2">
+            Our<strong class="text-[#F83D8E] ml-2">Best </strong>Sellers
+        </span>
+        <p class="text-gray-700 font-normal">
+            Discover the favorites that keep our customers coming back for more.
+        </p>
+
+        
+    </div>
+    <div class="w-full flex h-auto  mx-auto justify-center items-center mt-12">
+        <FavoriteCarousel />
+    </div>
+</div>

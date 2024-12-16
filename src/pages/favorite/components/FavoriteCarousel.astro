@@ -1,0 +1,84 @@
+---
+import { FavoriteCardModel } from "../../../model/favoriteCardModel";
+import FavoriteCard from "./FavoriteCard.astro";
+const filteredCards = FavoriteCardModel.slice(0, 7);
+---
+
+<script>
+  
+  let slideIndex = 0;
+
+ 
+  const changeSlide = (index: number) => {
+    slideIndex = index; 
+    updateCarousel(); 
+    updateDots(); 
+  };
+
+ 
+  const updateCarousel = () => {
+    const slides = document.querySelector(".inner");
+    if (slides instanceof HTMLElement) {
+      const slideElements = slides.querySelectorAll(".duration-700") as NodeListOf<HTMLElement>;
+      if (slideElements.length > 0) {
+        const slideWidth = slideElements[0].offsetWidth;
+        slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`; // Desplaza el contenedor
+      }
+    }
+  };
+
+ 
+  const updateDots = () => {
+    const dots = document.querySelectorAll(".carousel-dot");
+    dots.forEach((dot, index) => {
+      if (index === slideIndex) {
+        dot.classList.add("bg-pink-600");
+      } else {
+        dot.classList.remove("bg-pink-600");
+      }
+    });
+  };
+
+  
+  window.onload = () => {
+    updateCarousel(); 
+    updateDots(); 
+    const buttons = document.querySelectorAll(".carousel-dot");
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => changeSlide(index));
+    });
+  };
+</script>
+
+<div class="max-w-8xl px-12">
+  <div class="wrapper flex flex-col">
+    <!-- Carousel items -->
+    <div class="inner z-20 flex md:flex-row gap-5 flex-col mx-auto gap-x-6 overflow-hidden">
+      {FavoriteCardModel.map((item, index) => (
+        <div id={index.toString()} class="duration-700 ease-in-out">
+          <FavoriteCard title={item.title} desc={item.desc} image={item.image} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Carousel Dots (controls) -->
+    <div class="absolute hidden z-30 md:flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-[10%] left-1/2">
+      {filteredCards.map((item, index) => (
+        <button
+          id={index}
+          id={`dot-${index}`}
+          type="button"
+          class={`carousel-dot w-3 h-3 rounded-full ${index === 0 ? "bg-pink-600" : "bg-gray-200"}`}
+          aria-label={`Slide ${index + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+ 
+  .inner {
+    transition: transform 0.3s ease;
+  }
+</style>

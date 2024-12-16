@@ -1,0 +1,70 @@
+---
+import { NavLinks } from "../model/NavLinks";
+import { Search, ShoppingBag } from "lucide-react";
+import ButtonIcon from "./ButtonIcon.astro";
+import NavbarDesktop from "./NavbarDesktop.astro";
+import NavbarMobile from "./NavbarMobile.astro";
+---
+
+<script>
+  const navbar = document.querySelector("nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+      navbar?.classList.add("scrolled");
+    } else {
+      navbar?.classList.remove("scrolled");
+    }
+  });
+</script>
+
+<nav
+  class={`flex md:fixed top-0 left-0 right-0 z-40 items-center justify-between mx-auto py-3 duration-150 transition-all`}
+>
+  <img
+    src="/asset/logo-nav.svg"
+    class="w-[185px] h-[60px] object-fill"
+    alt=""
+  />
+  <div class="md:flex hidden">
+    <NavbarDesktop/>
+  </div>
+  <div class="md:hidden  flex px-7">
+    <NavbarMobile/>
+  </div>
+</nav>
+
+
+{
+  /*
+  <nav
+  class={`fixed top-0 left-0 right-0 z-40 sm:flex items-center justify-between mx-auto py-3 duration-150 transition-all`}
+>
+  <img
+    src="/asset/logo-nav.svg"
+    class="w-[185px] h-[60px] object-fill"
+    alt=""
+  />
+  <div class="flex items-center gap-7">
+    {
+      NavLinks.map((item) => (
+        <span class="font-medium hover:text-[#F83D8E] cursor-pointer duration-200 transition-all mr-4">
+          {item.title}
+        </span>
+      ))
+    }
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3">
+        <Search
+          className="h-[16px] hover:text-[#F73D8E] duration-200 transition-all cursor-pointer"
+        />
+        <ShoppingBag
+          className="h-[16px] hover:text-[#F73D8E] duration-200 transition-all cursor-pointer"
+        />
+      </div>
+      <ButtonIcon title="Contact Us" />
+    </div>
+  </div>
+</nav>
+
+  */
+}
